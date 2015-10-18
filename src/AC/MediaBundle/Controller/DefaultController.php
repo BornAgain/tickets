@@ -10,10 +10,11 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/hello/{name}")
-     * @Template()
      */
     public function indexAction($name)
     {
-        return array('name' => $name);
+        return $this->render("ACMediaBundle:Default:index.html.twig", array('name' => $name))
+        
+        ;
     }
 }
