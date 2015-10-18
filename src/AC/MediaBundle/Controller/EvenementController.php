@@ -7,47 +7,47 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
-     * @Route("/evenement")
-     */
+ * @Route("/evenement")
+ */
+class EvenementController extends Controller {
 
-class EvenementController extends Controller
-{
     /**
      * @Route("/ajouter", name="ac_media_bundle_evenement_ajouter")
      */
-    public function ajouterAction(\Symfony\Component\HttpFoundation\Request $request)
-    {
+    public function ajouterAction(\Symfony\Component\HttpFoundation\Request $request) {
         $entity = new \AC\MediaBundle\Entity\Evenement();
         $form = $this->get('form.factory')->create(new \AC\MediaBundle\Form\EvenementType, $entity);
 
-        if($form->handleRequest($request)->isValid())
-        {
-            var_dump($entity);
-            
+        if ($form->handleRequest($request)->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
+                        
+            $entity_theme_mois = $this->getDoctrine()
+                    ->getRepository('ACMediaBundle:ThemeDuMois')
+                    ->findByMois($entity->getDate()->format('m'));          
+            
+            $entity->setThemeMois($entity_theme_mois[0]);
             $em->persist($entity);
             $em->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-            return $this->redirect($this->generateUrl('ac_media_bundle_evenement_voir', array('id' => $entity->getId())));   
-            
+            return $this->redirect($this->generateUrl('ac_media_bundle_evenement_voir', array('id' => $entity->getId())));
         }
- 
-            return $this->render("ACMediaBundle:Evenement:ajouter.html.twig", array(
-                'form' => $form->createView()
-            ));
+
+        return $this->render("ACMediaBundle:Evenement:ajouter.html.twig", array(
+                    'form' => $form->createView()
+        ));
     }
 
     /**
      * @Route("/modifier/{id}", name="ac_media_bundle_evenement_modifier")
      */
-    public function modifierAction($id, \Symfony\Component\HttpFoundation\Request $request)
-    {
+    public function modifierAction($id, \Symfony\Component\HttpFoundation\Request $request) {
         $entity = $this->getDoctrine()->getManager()->getRepository("ACMediaBundle:Evenement")->find($id);
-        $form = $this->get('form.factory')->create(new  \AC\MediaBundle\Form\EvenementType, $entity);
-     
+        $form = $this->get('form.factory')->create(new \AC\MediaBundle\Form\EvenementType, $entity);
+
         if ($form->handleRequest($request)->isValid()) {
-          
-            
+
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -57,16 +57,14 @@ class EvenementController extends Controller
         }
 
         return $this->render("ACMediaBundle:Evenement:modifier.html.twig", array(
-                'form' => $form->createView()
-            ));
-        
+                    'form' => $form->createView()
+        ));
     }
 
     /**
      * @Route("/supprimer/{id}", name="ac_media_bundle_evenement_supprimer")
      */
-    public function supprimerAction($id)
-    {
+    public function supprimerAction($id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository("ACMediaBundle:Evenement")->find($id);
         $em->remove($entity);
@@ -78,41 +76,37 @@ class EvenementController extends Controller
     /**
      * @Route("/lister", name="ac_media_bundle_evenement_lister")
      */
-    public function listerAction()
-    {
-         $entities = $this->getDoctrine()->getManager()->getRepository("ACMediaBundle:Evenement")->findAll();
+    public function listerAction() {
+        $entities = $this->getDoctrine()->getManager()->getRepository("ACMediaBundle:Evenement")->findAll();
 
         return $this->render("ACMediaBundle:Evenement:lister.html.twig", array(
-                'entities' => $entities
-            ));
-        
+                    'entities' => $entities
+        ));
     }
 
     /**
      * @Route("/voir/{id}", name="ac_media_bundle_evenement_voir")
      */
-    public function voirAction($id)
-    {
-        
+    public function voirAction($id) {
+
         $entity = $this->getDoctrine()
-        ->getRepository('ACMediaBundle:Evenement')
-        ->find($id);
-        
-        $action = $this->generateUrl('ac_media_bundle_file_ajouter',array(
-            'id'=> $entity->getId()
+                ->getRepository('ACMediaBundle:Evenement')
+                ->find($id);
+
+        $action = $this->generateUrl('ac_media_bundle_file_ajouter', array(
+            'id' => $entity->getId()
         ));
         $entity_child = new \AC\MediaBundle\Entity\File();
-        $form = $this->get('form.factory')->create(new \AC\MediaBundle\Form\FileType(), $entity_child,
-                array('action' => $action,
-));
-        
-        
-        
+        $form = $this->get('form.factory')->create(new \AC\MediaBundle\Form\FileType(), $entity_child, array('action' => $action,
+        ));
+
+
+
 
         return $this->render("ACMediaBundle:Evenement:voir.html.twig", array(
-                "entity"=>$entity,
-                "form"=>$form->createView()
-            ));
+                    "entity" => $entity,
+                    "form" => $form->createView()
+        ));
     }
 
 }

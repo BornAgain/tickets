@@ -22,6 +22,14 @@ class ThemeDuMois
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="mois", type="string", length=255)
+     */
+    private $mois;
+    
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
@@ -90,5 +98,29 @@ class ThemeDuMois
     public function getTheme()
     {
         return $this->theme;
+    }
+
+    /**
+     * Set mois
+     *
+     * @param string $mois
+     *
+     * @return ThemeDuMois
+     */
+    public function setMois($mois)
+    {
+        $this->mois = $mois;
+
+        return $this;
+    }
+
+    /**
+     * Get mois
+     *
+     * @return string
+     */
+    public function getMois()
+    {
+        return $this->mois;
     }
 }

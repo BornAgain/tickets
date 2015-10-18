@@ -16,7 +16,7 @@ class EvenementType extends AbstractType
     {
         $builder
                 
-            ->add('type', 'choice', array('choices' => array('Culte 1' => 'Culte 1', 'Culte 2' => 'Culte 2', 'Culte 3' => 'Culte 3', 'Enseignement' => 'Enseignement', 'Séminaire' => 'Séminaire')))
+            ->add('type', 'choice', array('choices' => array('Culte' => 'Culte', 'Enseignement' => 'Enseignement', 'Séminaire' => 'Séminaire')))
             ->add('date', 'date', [
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
@@ -53,7 +53,7 @@ class EvenementType extends AbstractType
 
                 }
                 ))
-            ->add('themeMois', 'entity', array('class' => 'ACMediaBundle:ThemeDuMois', 'property' => 'theme'))
+            //->add('themeMois', 'entity', array('class' => 'ACMediaBundle:ThemeDuMois', 'property' => 'theme'))
         ;
     }
     
