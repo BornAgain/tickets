@@ -1,0 +1,8 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    
+ac_media:
+    resource: "@ACMediaBundle/Controller/"
+    type:     annotation
+    prefix:   /    

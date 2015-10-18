@@ -1,0 +1,141 @@
+{% extends "::base.html.twig" %}
+
+{% block pagetitle %}
+    <div class="title_left">
+        <h2>AcMedia <small>Ajouter événements</small></h2>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'method': 'POST'}) }}
+    <div class="" role="main">
+        <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+
+                            <div>
+                                <button type="submit" class="btn btn-success">Enregistrer</button>
+                                <button type="submit" class="btn btn-success">Enregistrer & Nouveau</button>
+                                <button type="reset" class="btn btn-primary">Cancel</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br />
+                            <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="month-title">Le thème du mois <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.themeMois, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Thème <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.theme, {'attr': {'class': 'form-control col-md-7 col-xs-12', 'placeholder': 'Entrez le thème'}}) }}
+
+                                    </div>
+                                </div>                                            
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.date, {'attr': {'class': 'form-control col-md-7 col-xs-12 date'}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Type <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.type, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="orateur">Orateur <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.orateur, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+
+                                    </div>
+                                </div>                                        
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="conducteur">Conducteur <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.conducteur, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="choeur">Choeur <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.choeur, {'attr': {'class': 'form-control col-md-7 col-xs-12 tags'}}) }}
+                                    </div>
+                                </div>                                                
+
+                                <div class="control-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Mots clé</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.tags, {'attr': {'class': 'form-control col-md-7 col-xs-12 tags'}}) }}
+                                        <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                    </div>
+                                </div>                                        
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <button type="submit" class="btn btn-primary">Cancel</button>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>                                        
+            </div>                 
+        </div>
+        <!-- /page content -->
+
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('js/datepicker/daterangepicker.js') }}"></script>    
+    <script type="text/javascript" src="{{ asset('js/form.js') }}"></script>
+    <!-- tags -->
+    <script src="{{ asset('js/tags/jquery.tagsinput.min.js') }}"></script>
+
+    <!-- input tags -->
+    <script>
+            function onAddTag(tag) {
+                alert("Added a tag: " + tag);
+            }
+
+            function onRemoveTag(tag) {
+                alert("Removed a tag: " + tag);
+            }
+
+            function onChangeTag(input, tag) {
+                alert("Changed a tag: " + tag);
+            }
+
+            $(function () {
+                $('.tags').tagsInput({
+                    width: 'auto'
+                });
+            });
+    </script>
+    <!-- /input tags -->
+    <!-- daterangepicker -->
+    <script type="text/javascript" src="{{ asset('js/moment.min2.js') }}"></script>
+
+{% endblock %}   
