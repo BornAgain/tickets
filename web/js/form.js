@@ -4,11 +4,4 @@
  * and open the template in the editor.
  */
 /** ******  left menu  *********************** **/
-$(function () {
-    $('.date').daterangepicker({
-        singleDatePicker: true,
-        calender_style: "picker_4"
-    }, function (start, end, label) {
-        console.log(start.toISOString(), end.toISOString(), label);
-    });
-});
+
