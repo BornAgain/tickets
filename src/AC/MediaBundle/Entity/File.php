@@ -50,7 +50,7 @@ class File {
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AC\MediaBundle\Entity\Evenement",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AC\MediaBundle\Entity\Evenement",cascade={"persist"},inversedBy="files")
      * @ORM\JoinColumn(nullable=True)
      */
     private $evenement;
