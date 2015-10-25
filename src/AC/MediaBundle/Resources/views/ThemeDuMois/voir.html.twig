@@ -1,7 +1,52 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ACMediaBundle:ThemeDuMois:voir{% endblock %}
-
-{% block body %}
-<h1>Welcome to the ThemeDuMois:voir page</h1>
+{% block pagetitle %}
+    <div class="title_left">
+        <h2>AcMedia <small>Voir le thème du mois</small></h2>
+    </div>
 {% endblock %}
+{% block body %}
+
+    <div class="x_title row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <a class="btn btn-warning" href="{{ path("ac_media_bundle_theme_du_mois_modifier",{'id':entity.id}) }}">Modifier <i class="fa fa-pencil-square-o"></i></a>
+            <a class="btn btn-danger" href="{{ path("ac_media_bundle_theme_du_mois_supprimer",{'id':entity.id}) }}">Supprimer <i class="fa fa-trash-o"></i></a>
+        </div>
+        <div class="pull-right col-md-6 col-md-6 col-md-12">
+            <a class="btn btn-success text-right pull-right" href="{{ path("ac_media_bundle_theme_du_mois_ajouter",{'id':entity.id}) }}"><i class="fa fa-plus-square-o"></i> Ajouter le thème du mois</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content row">
+        <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left col-md-9 col-sm-9 col-xs-9">
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="month-title">Le thème du mois <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span type="title" class="form-control" id="exampleInputTitle1">{{ entity.theme }}</span>
+                </div>
+            </div> 
+                                                       
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span type="title" class="form-control" id="exampleInputTitle3">{{ entity.date |date("d/m/Y") }}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Mois <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span type="title" class="form-control" id="exampleInputTitle4">{{ entity.mois }}</span>
+                </div>
+            </div>
+                                                  
+                                                        
+
+        </div>
+       
+    </div>
+
+{% endblock %}
+ 

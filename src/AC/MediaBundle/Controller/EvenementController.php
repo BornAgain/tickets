@@ -15,6 +15,7 @@ class EvenementController extends Controller {
      * @Route("/ajouter", name="ac_media_bundle_evenement_ajouter")
      */
     public function ajouterAction(\Symfony\Component\HttpFoundation\Request $request) {
+        ini_set('memory_limit', '128M');
         $entity = new \AC\MediaBundle\Entity\Evenement();
         $form = $this->get('form.factory')->create(new \AC\MediaBundle\Form\EvenementType, $entity);
 
@@ -49,6 +50,11 @@ class EvenementController extends Controller {
 
 
             $em = $this->getDoctrine()->getManager();
+            $entity_theme_mois = $this->getDoctrine()
+                    ->getRepository('ACMediaBundle:ThemeDuMois')
+                    ->findByMois($entity->getDate()->format('m'));          
+            
+            $entity->setThemeMois($entity_theme_mois[0]);            
             $em->persist($entity);
             $em->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');

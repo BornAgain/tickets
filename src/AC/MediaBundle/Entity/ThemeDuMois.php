@@ -3,12 +3,15 @@
 namespace AC\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * ThemeDuMois
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AC\MediaBundle\Entity\ThemeDuMoisRepository")
+ * @UniqueEntity(fields="mois", message="message")
  */
 class ThemeDuMois
 {
@@ -24,7 +27,7 @@ class ThemeDuMois
     /**
      * @var string
      *
-     * @ORM\Column(name="mois", type="string", length=255)
+     * @ORM\Column(name="mois", type="string", length=255, unique=true)
      */
     private $mois;
     

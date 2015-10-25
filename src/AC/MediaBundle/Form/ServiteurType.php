@@ -16,7 +16,7 @@ class ServiteurType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('type')
+            ->add('type','choice', array('choices' => array('orateur' => 'Orateur', 'conducteur' => 'Conducteur', 'choeur' => 'Choeur')))
         ;
     }
     

@@ -7,8 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
-     * @Route("/mois")
-     * @Template()
+     * @Route("/theme")
      */
 
 class ThemeDuMoisController extends Controller
@@ -24,6 +23,7 @@ class ThemeDuMoisController extends Controller
         
         if($form->handleRequest($request)->isValid())
         {
+            $entity->setMois($entity->getDate()->format('m'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -46,7 +46,7 @@ class ThemeDuMoisController extends Controller
      
         if ($form->handleRequest($request)->isValid()) {
           
-            
+            $entity->setMois($entity->getDate()->format('m'));            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();

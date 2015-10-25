@@ -23,7 +23,6 @@ class ThemeDuMoisType extends AbstractType
                     'data-provide' => 'datepicker',
                     'data-date-format' => 'dd/MM/yyyy']])
             ->add('theme')
-            
         ;
     }
     

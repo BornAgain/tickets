@@ -8,90 +8,79 @@
 
 {% block body %}
     {{ form_start(form, {'method': 'POST'}) }}
-    <div class="" role="main">
-        <div class="">
-            <div class="clearfix"></div>
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o "></i> Enregistrer</button>
-                                <a class="btn btn-warning" href="{{ path("ac_media_bundle_evenement_lister")}}"><i class="fa fa-times-circle-o"></i> Cancel</a>
-                            </div>
-                            <div class="pull-right col-md-6 col-md-6 col-md-12">
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <br />
-                            <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Thème <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.theme, {'attr': {'class': 'form-control col-md-7 col-xs-12', 'placeholder': 'Entrez le thème'}}) }}
-
-                                    </div>
-                                </div>                                            
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date<span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.date, {'attr': {'class': 'form-control col-md-7 col-xs-12 date'}}) }}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Type <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.type, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="orateur">Orateur <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.orateur, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
-
-                                    </div>
-                                </div>                                        
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="conducteur">Conducteur <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.conducteur, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="choeur">Choeur <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.choeur, {'attr': {'class': 'form-control col-md-7 col-xs-12 tags'}}) }}
-                                    </div>
-                                </div>                                                
-
-                                <div class="control-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Mots clé</label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ form_widget(form.tags, {'attr': {'class': 'form-control col-md-7 col-xs-12 tags'}}) }}
-                                        <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
-                                    </div>
-                                </div>                                        
-                                <div class="ln_solid"></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>                                        
-            </div>                 
+    <div class="x_title row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o "></i> Enregistrer</button>
+            <a class="btn btn-warning" href="{{ path("ac_media_bundle_evenement_lister")}}"><i class="fa fa-times-circle-o"></i> Cancel</a>
         </div>
-        <!-- /page content -->
-
+        <div class="pull-right col-md-6 col-md-6 col-md-12">
+        </div>
+        <div class="clearfix"></div>
     </div>
+    <div class="x_content">
+        <br />
+        <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Thème <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.theme, {'attr': {'class': 'form-control col-md-7 col-xs-12', 'placeholder': 'Entrez le thème'}}) }}
+
+                </div>
+            </div>                                            
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.date, {'attr': {'class': 'form-control col-md-7 col-xs-12 date'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Type <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="orateur">Orateur <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.orateur, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+
+                </div>
+            </div>                                        
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="conducteur">Conducteur <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.conducteur, {'attr': {'class': 'form-control col-md-7 col-xs-12'}}) }}
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="choeur">Choeur <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.choeur, {'attr': {'class': 'form-control col-md-7 col-xs-12 tags'}}) }}
+                </div>
+            </div>                                                
+
+            <div class="control-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Mots clé</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.tags, {'attr': {'class': 'form-control col-md-7 col-xs-12 tags'}}) }}
+                    <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                </div>
+            </div>                                        
+            <div class="ln_solid"></div>
+
+        </div>
+    </div>
+
     {{ form_end(form) }}
 {% endblock %}
 

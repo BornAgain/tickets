@@ -66,20 +66,36 @@ class FileController extends Controller {
         $entity = $em->getRepository("ACMediaBundle:File")->find($id);
         $parent = $entity->getEvenement();
         $parent_id = $parent->getId();
-        
-        
+
+
         $oldDir = $this->container->getParameter('app_root_files');
         $oldDir .= \AC\MediaBundle\Services\EvenementService::generateUrl($parent);
-        
+
         $newDir = $this->container->getParameter('app_root_files') . "trash/";
 
-        
-        rename($oldDir.$entity->getName(), $newDir.$entity->getName());
 
-        
+        rename($oldDir . $entity->getName(), $newDir . $entity->getName());
+
+
         $em->remove($entity);
         $em->flush();
         return $this->redirect($this->generateUrl("ac_media_bundle_evenement_voir", array('id' => $parent_id)));
+    }
+
+    /**
+     * @Route("/download/{id}", name="ac_media_bundle_file_download")
+     */
+    public function downloadAction(\AC\MediaBundle\Entity\File $file) {
+
+        $doc = $this->container->getParameter('app_root_files');
+        $doc .= \AC\MediaBundle\Services\EvenementService::generateUrl($file->getEvenement());
+        $doc .= $file->getName();
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->setContent(file_get_contents($doc));
+        $response->headers->set('Content-Type', 'audio'); // modification du content-type pour forcer le téléchargement (sinon le navigateur internet essaie d'afficher le document)
+        $response->headers->set('Content-disposition', 'filename=' . $file->getName());
+
+        return $response;
     }
 
 }
