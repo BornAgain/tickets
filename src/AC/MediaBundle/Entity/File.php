@@ -3,6 +3,7 @@
 namespace AC\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * File
@@ -46,6 +47,8 @@ class File {
      * @var string
      *
      * @ORM\Column(name="file", type="string", length=500)
+     * @Assert\File(maxSize="2147483648")
+     * 
      */
     private $file;
 
