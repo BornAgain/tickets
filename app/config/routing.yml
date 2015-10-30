@@ -1,0 +1,17 @@
+itss_user:
+    resource: "@ITSSUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+itss_tickets:
+    resource: "@ITSSTicketsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
+    
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"    

@@ -1,0 +1,64 @@
+{% extends "::layout.html.twig" %}
+
+{% block pageheader %}
+    Ticket Management
+    <small>View ticket</small>
+{% endblock %}
+
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('notice_ticket_add') %}
+    <div class="alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Ticket Form</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="form-group">
+                <label for="country">Title</label>
+                <span type="title" class="form-control" id="exampleInputTitle1">{{ entity.title }}</span>
+
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <div class="" id="exampleInputContent1" style="word-wrap: break-word;">{{ entity.content |raw }}</div>
+            </div>
+        </div><!-- /.box-body -->
+
+        <div class="box-footer">
+        </div>
+    </div><!-- /.box -->
+    {% for comm in entity.comment %}
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="cContent">Comment</label>
+                    <span type="cContent" class="form-control" id="exampleInputTitle1">{{ comm.content | raw }}</span>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+    {% endfor %}
+       
+        <div class="box-footer">
+            {{ form(form) }}
+        </div>
+    </div><!-- /.box -->
+{% endblock %}
+
+    {% block javascripts %}
+    
+        {{ parent() }}
+
+            <script type="text/javascript">
+                $(function () {
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace('itss_ticketsbundle_comment_content');
+                    //bootstrap WYSIHTML5 - text editor
+                    $(".textarea").wysihtml5();
+                });
+            </script>
+       
+    {% endblock %}

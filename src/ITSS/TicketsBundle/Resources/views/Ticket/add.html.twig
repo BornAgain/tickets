@@ -1,0 +1,63 @@
+{% extends "::layout.html.twig" %}
+
+{% block pageheader %}
+    Ticket Management
+    <small>Add a new ticket</small>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Ticket Form</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        {{ form_start(form, {'method': 'POST'}) }}
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="title">{{ form_label(form.title) }}</label>
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control','placeholder': 'Enter Title'}}) }}
+                </div>
+                <div class="form-group">
+                    <label for="project">{{ form_label(form.projet) }}</label>
+                    {{ form_widget(form.projet, {'attr': {'class': 'form-control','placeholder': 'Institution Country'}}) }}
+                </div>                 
+                <div class="form-group">
+                    <label for="content">{{ form_label(form.content) }}</label>
+                    {{ form_widget(form.content, {'attr': {'class': 'form-control itss_ticketsbundle_ticket[content]','placeholder': 'Institution Country'}}) }}
+                </div>               
+            </div><!-- /.box-body -->
+{#                <div class="form-group">
+                    <label for="content">{{ form_label(form.comment) }}</label>
+                    {{ form_widget(form.comment) }}
+                </div> #}           
+            <div class="box-footer">
+                {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+        {{ form_end(form) }}
+        <!--<textarea class="editor1" name="editor1"></textarea>-->
+    </div><!-- /.box -->
+{% endblock %}
+
+    {% block javascripts %}
+    
+        {{ parent() }}
+        
+{#        <script src="{{ asset('assetic/js/form_add.js') }}" type="text/javascript" charset="utf-8"></script>#}
+{#        <script src="{{ asset('js/form_loading.js') }}" type="text/javascript" charset="utf-8"></script>#}
+    
+        
+{#        <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+        <script>tinymce.init({selector:'textarea'});</script>#}
+
+
+            <script type="text/javascript">
+                $(function () {
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace('itss_ticketsbundle_ticket[content]');
+                    //bootstrap WYSIHTML5 - text editor
+                    $(".textarea").wysihtml5();
+                });
+            </script>
+       
+    {% endblock %}

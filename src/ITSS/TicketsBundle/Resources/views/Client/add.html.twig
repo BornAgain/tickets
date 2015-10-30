@@ -1,0 +1,31 @@
+{% extends "::layout.html.twig" %}
+
+{% block pageheader %}
+    Client Management
+    <small>Add a new client</small>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Client Form</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        {{ form_start(form, {'method': 'POST'}) }}
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="name">{{ form_label(form.name) }}</label>
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder': 'Institution Name'}}) }}
+                </div>
+                <div class="form-group">
+                    <label for="country">{{ form_label(form.country) }}</label>
+                    {{ form_widget(form.country, {'attr': {'class': 'form-control','placeholder': 'Institution Country'}}) }}
+                </div>
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+                {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+        {{ form_end(form) }}
+    </div><!-- /.box -->
+{% endblock %}
