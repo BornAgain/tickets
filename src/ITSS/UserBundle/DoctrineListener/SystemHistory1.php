@@ -23,7 +23,7 @@ use \Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class SystemHistory1 implements AuthenticationSuccessHandlerInterface{
     protected $container;
-    public function __construct() {
+    public function __construct(\Symfony\Component\DependencyInjection\Container $container) {
         $this->container = $container;        
     }
     
