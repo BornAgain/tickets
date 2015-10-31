@@ -13,3 +13,7 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ @annotation_reader ] ]
+            
+    ac.doctrine.history:
+        class: AC\UserBundle\DoctrineListener\SystemHistory1
+        arguments: [@service_container,@router]            

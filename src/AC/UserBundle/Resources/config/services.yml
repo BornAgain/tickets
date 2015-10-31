@@ -1,0 +1,4 @@
+services:
+#    itss_user.example:
+#        class: ITSS\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

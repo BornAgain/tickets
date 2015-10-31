@@ -12,21 +12,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap core CSS -->
-
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-        <link href="{{ asset('fonts/css/font-awesome.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
-        <!-- Custom styling plus plugins -->
-        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/icheck/flat/green.css') }}" rel="stylesheet">
-
-
         {% block stylesheets %}  
-
-
-
+            <!-- Bootstrap core CSS -->
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('fonts/css/font-awesome.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
+            <!-- Custom styling plus plugins -->
+            <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/icheck/flat/green.css') }}" rel="stylesheet">
         {% endblock %}
 
         <!--[if lt IE 9]>
@@ -58,15 +51,15 @@
                         <div class="clearfix"></div>
 
                         <!-- menu prile quick info -->
-{#                        <div class="profile">
-                            <div class="profile_pic">
-                                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-                            </div>
-                            <div class="profile_info">
-                                <span>Welcome,</span>
-                                <h2>Anthony Fernando</h2>
-                            </div>
-                        </div>#}
+                        {#                        <div class="profile">
+                                                    <div class="profile_pic">
+                                                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                                                    </div>
+                                                    <div class="profile_info">
+                                                        <span>Welcome,</span>
+                                                        <h2>Anthony Fernando</h2>
+                                                    </div>
+                                                </div>#}
                         <!-- /menu prile quick info -->
 
                         <br />
@@ -264,7 +257,7 @@
                                     <h3>AcMedia</h3>
                                 </div>
                             {% endblock %}
-                            
+
                         </div>
                         <div class="clearfix"></div>
 
@@ -320,22 +313,23 @@
             <div class="clearfix"></div>
             <div id="notif-group" class="tabbed_notifications"></div>
         </div>
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <!-- chart js -->
-        <script src="{{ asset('js/chartjs/chart.min.js') }}"></script>
-        <!-- bootstrap progress js -->
-        <script src="{{ asset('js/progressbar/bootstrap-progressbar.min.js') }}"></script>
-        <script src="{{ asset('js/nicescroll/jquery.nicescroll.min.js') }}"></script>
-        <!-- icheck -->
-        <script src="{{ asset('js/icheck/icheck.min.js') }}"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
-        <!-- moris js -->
-        <script src="{{ asset('js/moris/raphael-min.js') }}"></script>
-        <script src="{{ asset('js/moris/morris.js') }}"></script>
+
 
 
         {% block javascripts %}
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <!-- chart js -->
+            <script src="{{ asset('js/chartjs/chart.min.js') }}"></script>
+            <!-- bootstrap progress js -->
+            <script src="{{ asset('js/progressbar/bootstrap-progressbar.min.js') }}"></script>
+            <script src="{{ asset('js/nicescroll/jquery.nicescroll.min.js') }}"></script>
+            <!-- icheck -->
+            <script src="{{ asset('js/icheck/icheck.min.js') }}"></script>
+            <script src="{{ asset('js/custom.js') }}"></script>
+            <!-- moris js -->
+            <script src="{{ asset('js/moris/raphael-min.js') }}"></script>
+            <script src="{{ asset('js/moris/morris.js') }}"></script>
         {% endblock %}
 
 

@@ -137,6 +137,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{parent()}}
     <!-- image cropping -->
     <script src="{{ asset('js/cropping/cropper.min.js') }}"></script>
     <script src="{{ asset('js/cropping/main.js') }}"></script>
